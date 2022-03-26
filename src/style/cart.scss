@@ -1,0 +1,42 @@
+.floating-cart-container{
+     position: fixed;
+     right: 0;
+     top:50%;
+     transform: translateY(-50%);
+     z-index: 10;
+
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 10px 0 0 10px;
+    border: 2px solid red;   
+}
+
+.floating-cart-item-number{
+    width: 100%;
+ border-bottom: 2px solid red;
+ padding-bottom: 10px;
+}
+.floating-cart-icon{
+     font-size: 30px;
+    font-weight: bold;
+    width: 100%;   
+}
+
+
+//Minicart
+
+.minicart-container{
+    width: 100%;
+    height: auto;
+    color: white;
+    z-index: 1000000000000;
+}

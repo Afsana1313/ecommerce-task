@@ -1,0 +1,15 @@
+.whole-container{
+    position: relative;
+}
+.center-container{
+    width: max(80vw, 500px);
+    display: flex;
+    flex-direction: row;
+    margin-inline: auto;
+}
+.product-container{
+    width: 100%; // change
+     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: max(1.5em, 10px);
+}

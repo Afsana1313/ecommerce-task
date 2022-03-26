@@ -1,0 +1,24 @@
+@mixin large-Monitor-Breakpoint {
+    @media all and (min-width: $largeMonitorBreakpoint) {
+        @content;
+    }
+}
+
+@mixin small-Monitor-Breakpoint {
+    @media all and (max-width: $smallMonitorBreakpoint) {
+        @content;
+    }
+}
+
+@mixin mobile-Breakpoint {
+    @media all and (max-width: $mobileBreakpoint) {
+        @content;
+    }
+}
+
+
+@mixin largest-MobileScreen {
+    @media all and (max-width: $largestMobileScreen) {
+        @content;
+    }
+}

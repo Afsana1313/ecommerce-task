@@ -1,0 +1,20 @@
+.ui.card {
+    margin: 0;
+    box-shadow: -5px 5px 5px rgb(207, 204, 204);
+}
+
+.header {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.description {
+    font-size: 15px;
+    line-height: 19px;
+    color: $primary-color;
+}
+
+.single-product-container-text {
+    padding: 1em;
+}
