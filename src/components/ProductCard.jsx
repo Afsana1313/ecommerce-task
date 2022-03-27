@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CustomButton from './CustomButton'
 import { Link } from 'react-router-dom'
 import { Card, Image } from 'semantic-ui-react'
@@ -7,7 +7,13 @@ function ProductCard(props) {
   const [isInCart, setIsInCart] = useState(false)
   const btnText = isInCart ? 'View Cart' : 'Add To Cart'
   const { id, title, price, product_img } = props.product
-  const { cartData, setCarttData } = useDataContext()
+  const { cartData, setCarttData, setIsMiniCartOpen } = useDataContext()
+  useEffect(() => {
+    !!cartData?.find((i) => i.id === id)
+      ? setIsInCart(true)
+      : setIsInCart(false)
+    // console.log(cart)
+  }, [cartData, id])
   const addToCartBtn = {
     width: '100%',
     textTransform: 'uppercase',
@@ -33,7 +39,7 @@ function ProductCard(props) {
         </Card.Content>
       </Link>
       <div
-        onClick={() => (isInCart ? console.log(isInCart) : handleAddToCart())}
+        onClick={() => (isInCart ? setIsMiniCartOpen(true) : handleAddToCart())}
       >
         <CustomButton style={addToCartBtn}>{btnText}</CustomButton>
       </div>

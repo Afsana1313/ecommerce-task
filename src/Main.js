@@ -3,17 +3,9 @@ import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "./components/SingleProduct";
 import Header from "./components/Header";
+import Checkout from "./components/Checkout";
 
-import {
-  Icon,
-  Rail,
-  Ref,
-  Grid,
-  Menu,
-  Segment,
-  Sidebar,
-  Sticky
-} from "semantic-ui-react";
+import MiniCartModal from "./components/cart/MiniCartModal";
 
 export const DataContext = createContext(null);
 
@@ -36,7 +28,9 @@ function Main() {
         <Routes>
           <Route path="/" element={<App />}></Route>
           <Route path="/:id" element={<SingleProduct />}></Route>
+          <Route path="/checkout" element={<Checkout />}></Route>
         </Routes>
+        <MiniCartModal />
       </BrowserRouter>
     </DataContext.Provider>
   );

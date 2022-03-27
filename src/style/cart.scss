@@ -1,3 +1,6 @@
+.no-transform{
+    transform: none !important;
+}
 .floating-cart-container{
      position: fixed;
      right: 0;
@@ -33,10 +36,55 @@
 
 
 //Minicart
-
-.minicart-container{
+.cart-container{
+    position:fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+    background-color: black;
+    z-index: 100;
+    transform: translateX(50%);
+    transition: all 0.7s ease-in;
+}
+.cart-bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
-    height: auto;
-    color: white;
-    z-index: 1000000000000;
+    background-color: rgb(255 255 255 / 0.6);
+    z-index: 10;
+}
+//orverwrittern rule
+.position-right{
+    position: absolute;
+    right: 10px;
+}
+.position-left{
+    position: absolute;
+    left: 10px;
+}
+.ui.selection.dropdown{
+    min-width: 2em !important;
+}
+.margin-left{
+    margin-left: 10px !important;
+}
+div.header, div.actions{
+   margin: 30px 0;
+}
+@media only screen and (max-width: 767px)
+{
+    .ui.modal .image.content {
+     -webkit-box-orient: horizontal;
+    /* -webkit-box-direction: normal; */
+    -ms-flex-direction: column;
+     flex-direction: row; 
+}
+.ui.modal .content>.description{
+    width: auto !important;
+    margin-left: 1em !important;
+}
+
 }

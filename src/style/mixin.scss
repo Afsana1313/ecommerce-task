@@ -1,24 +1,29 @@
-@mixin large-Monitor-Breakpoint {
-    @media all and (min-width: $largeMonitorBreakpoint) {
+@mixin desktop-landscape-min {
+    @media all and (min-width: $bp-desktop) {
         @content;
     }
 }
 
-@mixin small-Monitor-Breakpoint {
-    @media all and (max-width: $smallMonitorBreakpoint) {
+@mixin laptop-landscape-max {
+    @media all and (max-width: $bp-laptop) {
         @content;
     }
 }
 
-@mixin mobile-Breakpoint {
-    @media all and (max-width: $mobileBreakpoint) {
+@mixin tablet-portrait-max {
+    @media all and (max-width: $bp-tablet) {
         @content;
     }
 }
 
 
-@mixin largest-MobileScreen {
-    @media all and (max-width: $largestMobileScreen) {
+@mixin mobile-portrait-max {
+    @media all and (max-width: $bp-mobile) {
+        @content;
+    }
+}
+@mixin desktop-landscape-min2 {
+    @media all and (min-width: $bp-desktop2) {
         @content;
     }
 }
