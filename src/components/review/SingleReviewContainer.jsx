@@ -6,7 +6,7 @@ import ReviewContent from './ReviewContent'
 
 function SingleReviewContainer({ review }) {
   const { customerData } = useDataContext()
-  const { id, rating, comment, created_at, u_id } = review
+  const { u_id } = review
   const customer = getUserInformation(customerData, u_id)
   return (
     <div className="single-review-box">

@@ -1,6 +1,4 @@
-import _ from 'lodash'
-import React, { useState, useEffect } from 'react'
-import { Search } from 'semantic-ui-react'
+import React from 'react'
 import useDataContext from '../useDataContext'
 import {
   updateResultData,

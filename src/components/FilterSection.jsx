@@ -24,16 +24,18 @@ function FilterSection() {
   }
   return (
     <div className="filter-container">
-      <SearchContainer2 />
-      <FilterByCategories />
-      <FilterByRating />
-      {(filterByCategories !== 'all' ||
-        filterByRating != 1 ||
-        searchText != '') && (
-        <Button basic color="red" onClick={handleClearFilter}>
-          Clear Filter
-        </Button>
-      )}
+      <div className="filter-wrapper">
+        <SearchContainer2 />
+        <FilterByCategories />
+        <FilterByRating />
+        {(filterByCategories !== 'all' ||
+          filterByRating !== 1 ||
+          searchText !== '') && (
+          <Button basic color="red" onClick={handleClearFilter}>
+            Clear Filter
+          </Button>
+        )}
+      </div>
     </div>
   )
 }

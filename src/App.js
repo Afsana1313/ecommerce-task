@@ -4,7 +4,8 @@ import FilterSection from "./components/FilterSection";
 import { useEffect } from "react";
 import useDataContext from "./components/useDataContext";
 function App() {
-  const { setProductData, setCustomerData, setCategories } = useDataContext();
+  const { setProductData, setCustomerData, setCategories, setResultData } =
+    useDataContext();
   const getData = () => {
     fetch("./assets/products.json", {
       headers: {
@@ -14,8 +15,9 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        //console.log(data);
         setProductData(data);
+        setResultData(data);
       });
   };
   const getCustomersData = () => {
@@ -46,7 +48,7 @@ function App() {
     getData();
     getCustomersData();
     getCategoriesData();
-  }, []);
+  });
 
   return (
     <div className="whole-container">

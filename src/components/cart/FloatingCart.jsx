@@ -6,7 +6,7 @@ import Odometer from 'react-odometerjs'
 
 function FloatingCart() {
   const { cartData, setIsMiniCartOpen, isMiniCartOpen } = useDataContext()
-  const cartStyle = {}
+
   return (
     <div
       className="floating-cart-container"

@@ -1,5 +1,5 @@
-import ProductCard from "../components/ProductCard";
 import { listOfMonths } from "../static/data";
+
 // Cart Related Controller functions
 
 export const getSingleData = (productData, id) => {
@@ -68,6 +68,15 @@ export const addNewItemToCart = (singleData, cartData, productQuantity) => {
   console.log(isInCart);
   return newData;
 };
+export const getCategories = (categories, productCategories) => {
+  var category_list = [];
+  categories.forEach((item) => {
+    productCategories.forEach((i) => {
+      if (i === item.id) category_list.push(item.name);
+    });
+  });
+  return category_list.join(", ");
+};
 
 // Customer Data Related Functions
 export const getUserInformation = (customerData, id) => {
@@ -95,7 +104,7 @@ export const getResultDataWithSearchText = (resultData, searchText) => {
   var newData = [];
   // console.log(newData);
   newID.forEach((i) => {
-    newData.push(resultData?.find((item) => item.id == i));
+    newData.push(resultData?.find((item) => item.id === i));
   });
   return newData;
 };
@@ -105,10 +114,10 @@ export const getResultDataWithRating = (numberRating, productData) => {
 };
 export const getResultDataWithCategories = (categories, productData) => {
   var newItem = [];
-  if (categories == "all") return productData;
+  if (categories === "all") return productData;
   productData?.forEach((item) => {
     item?.categories?.forEach((i) => {
-      if (i == categories) newItem.push(item);
+      if (i === categories) newItem.push(item);
     });
   });
   return newItem;

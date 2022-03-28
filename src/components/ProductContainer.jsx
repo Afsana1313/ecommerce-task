@@ -1,17 +1,20 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import ProductCard from './ProductCard'
 import useDataContext from './useDataContext'
 import { Outlet } from 'react-router-dom'
 
 function ProductContainer() {
-  const { resultData, productData } = useDataContext()
+  const { setResultData, resultData, productData } = useDataContext()
+  useEffect(() => {
+    setResultData(productData)
+  }, [])
   //var data = resultData?.length == 0 ? productData : resultData
-  var data = resultData
+
   return (
     <div className="product-container">
-      {data?.length > 0 ? (
+      {resultData?.length > 0 ? (
         <>
-          {data?.map((i) => (
+          {resultData?.map((i) => (
             <ProductCard key={i.id} product={i} />
           ))}
         </>

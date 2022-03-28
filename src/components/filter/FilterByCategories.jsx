@@ -18,7 +18,7 @@ function FilterByCategories() {
     )
   }
   return (
-    <div>
+    <div style={{ zIndex: '10000' }}>
       <h3>Filter By Categories</h3>
       <select name="categories" id="categories" onChange={handleChange}>
         <option key={'all'} value="all">

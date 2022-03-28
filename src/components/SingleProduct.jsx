@@ -3,16 +3,17 @@ import {
   getSingleData,
   calculateRating,
   addNewItemToCart,
+  getCategories,
 } from '../controller/controller'
 import useDataContext from './useDataContext'
 import React, { useState } from 'react'
-import { Item, Image, Tab, Rating, Select, Button } from 'semantic-ui-react'
+import { Item, Tab, Rating, Select, Button } from 'semantic-ui-react'
 import { numberOptions } from '../static/data'
 import Reviews from './review/Reviews'
 
 const SingleProduct = () => {
   const [productQuantity, setProductQuantity] = useState({ value: 1 })
-  const { productData, cartData, setCarttData } = useDataContext()
+  const { productData, cartData, setCarttData, categories } = useDataContext()
   let params = useParams()
   let singleData = getSingleData(productData, params.id)
 
@@ -31,6 +32,9 @@ const SingleProduct = () => {
               <Item.Content>
                 <Item.Header as="a">{singleData.title}</Item.Header>
                 <Item.Meta>{singleData.price}</Item.Meta>
+                <Item.Description>
+                  Categories: {getCategories(categories, singleData.categories)}
+                </Item.Description>
                 <Item.Description>{singleData.description}</Item.Description>
                 <Item.Extra>
                   {' '}

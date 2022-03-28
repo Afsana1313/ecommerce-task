@@ -10,19 +10,47 @@ import {
   Header,
   Radio,
   Segment,
-  Table,
 } from 'semantic-ui-react'
-import { getTotalValue } from '../controller/controller'
-import { districtOptions, genderOptions } from '../static/data'
-import ModalPlaceOrder from './ModalPlaceOrder'
-import useDataContext from './useDataContext'
+import { getTotalValue } from '../../controller/controller'
+import { districtOptions, genderOptions } from '../../static/data'
+import useDataContext from '../useDataContext'
+import DisplayTotalValue from './DisplayTotalValue'
 
 function Checkout() {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [gender, setGender] = useState('')
+  const [district, setDistrict] = useState('')
+  const [address, setAddress] = useState('')
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState(false)
+
   const [deliveryOption, setDeliveryOption] = useState('cod')
   const { cartData } = useDataContext()
+  React.useEffect(() => {
+    const { firstName, lastName, gender, address, email, district } = checkError
+    if (
+      firstName === '' ||
+      lastName === '' ||
+      gender === '' ||
+      address === '' ||
+      email === '' ||
+      district === ''
+    )
+      setError(true)
+    else setError(false)
+  })
   const handleDeliveryOptions = (e, { value }) => {
     e.preventDefault()
     setDeliveryOption(value)
+  }
+  const checkError = {
+    firstName,
+    lastName,
+    district,
+    gender,
+    email,
+    address,
   }
   return (
     <div className="checkout-container">
@@ -34,6 +62,8 @@ function Checkout() {
               control={Input}
               label="First name"
               placeholder="First name"
+              onChange={(e) => setFirstName(e.target.value)}
+              value={firstName}
               required
             />
             <Form.Field
@@ -41,6 +71,8 @@ function Checkout() {
               control={Input}
               label="Last name"
               placeholder="Last name"
+              onChange={(e) => setLastName(e.target.value)}
+              value={lastName}
               required
             />
             <Form.Field
@@ -53,6 +85,8 @@ function Checkout() {
               }}
               placeholder="Gender"
               search
+              onChange={(e, val) => setGender(val.value)}
+              value={gender}
               searchInput={{ id: 'form-select-control-gender' }}
             />
           </Form.Group>
@@ -68,6 +102,8 @@ function Checkout() {
               placeholder="District"
               search
               searchInput={{ id: 'form-select-control-district' }}
+              onChange={(e, m) => setDistrict(m.value)}
+              value={district}
             />
             <Form.Field
               id="form-input-control-address"
@@ -76,6 +112,8 @@ function Checkout() {
               placeholder="Address"
               type="address"
               required
+              onChange={(e) => setAddress(e.target.value)}
+              value={address}
             />
           </Form.Group>
           <Form.Field
@@ -90,6 +128,8 @@ function Checkout() {
             control={Input}
             label="Email"
             placeholder="joe@schmoe.com"
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
           <Segment placeholder>
             <Grid columns={2} stackable textAlign="center">
@@ -118,48 +158,7 @@ function Checkout() {
                   </Form.Field>
                 </Grid.Column>
 
-                <Grid.Column>
-                  <Table
-                    basic="very"
-                    celled
-                    collapsing
-                    style={{ margin: '0 auto 10px' }}
-                  >
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>
-                          <Header as="h4">
-                            <Header.Content>Total Cart Value:</Header.Content>
-                          </Header>
-                        </Table.Cell>
-                        <Table.Cell>&#36;{getTotalValue(cartData)}</Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>
-                          <Header as="h4">
-                            <Header.Content>Delivery Charge:</Header.Content>
-                          </Header>
-                        </Table.Cell>
-                        <Table.Cell>&#36; 50</Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                    <Table.Body>
-                      <Table.Row>
-                        <Table.Cell>
-                          <Header as="h4">
-                            <Header.Content>Grand Value:</Header.Content>
-                          </Header>
-                        </Table.Cell>
-                        <Table.Cell>
-                          &#36;{getTotalValue(cartData) + 50}
-                        </Table.Cell>
-                      </Table.Row>
-                    </Table.Body>
-                  </Table>
-                  <ModalPlaceOrder />
-                </Grid.Column>
+                <DisplayTotalValue checkError={error} />
               </Grid.Row>
             </Grid>
           </Segment>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Header, Image, Modal, Select, Menu } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, Select } from 'semantic-ui-react'
 import FloatingCart from './FloatingCart'
 import useDataContext from '../useDataContext'
 import { Link } from 'react-router-dom'

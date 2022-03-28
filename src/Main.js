@@ -3,7 +3,7 @@ import { useState, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "./components/SingleProduct";
 import Header from "./components/Header";
-import Checkout from "./components/Checkout";
+import Checkout from "./components/checkout/Checkout";
 import MiniCartModal from "./components/cart/MiniCartModal";
 export const DataContext = createContext(null);
 
