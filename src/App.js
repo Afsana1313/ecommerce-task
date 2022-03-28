@@ -5,8 +5,7 @@ import { useEffect, createRef } from "react";
 import useDataContext from "./components/useDataContext";
 import FloatingCart from "./components/cart/FloatingCart";
 function App() {
-  const { setProductData, isMiniCartOpen, setIsMiniCartOpen } =
-    useDataContext();
+  const { setProductData, setCustomerData } = useDataContext();
   const getData = () => {
     fetch("./assets/products.json", {
       headers: {
@@ -20,8 +19,21 @@ function App() {
         setProductData(data);
       });
   };
+  const getCustomersData = () => {
+    fetch("./assets/customers.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCustomerData(data);
+      });
+  };
   useEffect(() => {
     getData();
+    getCustomersData();
   }, []);
 
   return (

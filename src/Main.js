@@ -12,12 +12,16 @@ export const DataContext = createContext(null);
 function Main() {
   const [productData, setProductData] = useState([]);
   const [cartData, setCarttData] = useState([]);
+  const [customerData, setCustomerData] = useState([]);
+
   const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
   const value = {
     productData,
     setProductData,
     cartData,
     setCarttData,
+    customerData,
+    setCustomerData,
     isMiniCartOpen,
     setIsMiniCartOpen
   };

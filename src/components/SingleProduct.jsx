@@ -8,6 +8,7 @@ import useDataContext from './useDataContext'
 import React, { useState } from 'react'
 import { Item, Image, Tab, Rating, Select, Button } from 'semantic-ui-react'
 import { numberOptions } from '../static/data'
+import Reviews from './review/Reviews'
 
 const SingleProduct = () => {
   const [productQuantity, setProductQuantity] = useState({ value: 1 })
@@ -43,7 +44,7 @@ const SingleProduct = () => {
                   defaultValue={1}
                   onChange={(e, { value }) => {
                     setProductQuantity({ value })
-                    console.log(productQuantity)
+                    console.log({ value })
                   }}
                   options={numberOptions}
                 />
@@ -58,7 +59,14 @@ const SingleProduct = () => {
         </Tab.Pane>
       ),
     },
-    { menuItem: 'Reviews', render: () => <Tab.Pane>Reviews</Tab.Pane> },
+    {
+      menuItem: 'Reviews',
+      render: () => (
+        <Tab.Pane>
+          <Reviews reviews={singleData.reviews} />
+        </Tab.Pane>
+      ),
+    },
   ]
 
   return <Tab panes={panes} />

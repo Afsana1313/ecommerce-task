@@ -1,3 +1,6 @@
+import { listOfMonths } from "../static/data";
+// Cart Related Controller functions
+
 export const getSingleData = (productData, id) => {
   return productData?.find((i) => parseInt(id) === i.id);
 };
@@ -63,4 +66,16 @@ export const addNewItemToCart = (singleData, cartData, productQuantity) => {
   }
   console.log(isInCart);
   return newData;
+};
+
+// Customer Data Related Functions
+export const getUserInformation = (customerData, id) => {
+  return customerData?.find((i) => i.u_id === id);
+};
+export const dateFormatter = (stringDate) => {
+  const year = stringDate.slice(0, 4);
+  const numberMonth = stringDate.slice(5, 7);
+  const { month } = listOfMonths?.find((i) => i.key === numberMonth);
+  const date = stringDate.slice(8, 10);
+  return `${month} ${date}, ${year}`;
 };

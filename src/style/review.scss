@@ -1,0 +1,14 @@
+.single-review-box{
+    display: flex;
+    flex-direction: row;
+}
+.review-content{
+    width: 100%;
+    margin-left: 10px;
+}
+.review-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}

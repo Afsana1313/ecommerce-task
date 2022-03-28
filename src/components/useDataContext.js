@@ -7,6 +7,8 @@ const useDataContext = () => {
     setProductData,
     cartData,
     setCarttData,
+    customerData,
+    setCustomerData,
     isMiniCartOpen,
     setIsMiniCartOpen
   } = useContext(DataContext);
@@ -15,6 +17,8 @@ const useDataContext = () => {
     setProductData,
     cartData,
     setCarttData,
+    customerData,
+    setCustomerData,
     isMiniCartOpen,
     setIsMiniCartOpen
   };
