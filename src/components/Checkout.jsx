@@ -6,23 +6,18 @@ import {
   TextArea,
   Button,
   Select,
-  Divider,
   Grid,
   Header,
-  Icon,
-  Search,
   Radio,
   Segment,
   Table,
-  Modal,
 } from 'semantic-ui-react'
 import { getTotalValue } from '../controller/controller'
 import { districtOptions, genderOptions } from '../static/data'
+import ModalPlaceOrder from './ModalPlaceOrder'
 import useDataContext from './useDataContext'
 
 function Checkout() {
-  const [open, setOpen] = React.useState(false)
-
   const [deliveryOption, setDeliveryOption] = useState('cod')
   const { cartData } = useDataContext()
   const handleDeliveryOptions = (e, { value }) => {
@@ -31,7 +26,6 @@ function Checkout() {
   }
   return (
     <div className="checkout-container">
-      {' '}
       {getTotalValue(cartData) ? (
         <Form>
           <Form.Group widths="equal">
@@ -164,31 +158,7 @@ function Checkout() {
                       </Table.Row>
                     </Table.Body>
                   </Table>
-                  <Modal
-                    onClose={() => setOpen(false)}
-                    onOpen={() => setOpen(true)}
-                    open={open}
-                    trigger={
-                      <Button
-                        type="submit"
-                        color="violet"
-                        style={{ width: '100%' }}
-                      >
-                        Place Order
-                      </Button>
-                    }
-                  >
-                    <Modal.Content>
-                      <Modal.Description>
-                        <Header>Default Profile Image</Header>
-                        <p>
-                          We've found the following gravatar image associated
-                          with your e-mail address.
-                        </p>
-                        <p>Is it okay to use this photo?</p>
-                      </Modal.Description>
-                    </Modal.Content>
-                  </Modal>
+                  <ModalPlaceOrder />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
