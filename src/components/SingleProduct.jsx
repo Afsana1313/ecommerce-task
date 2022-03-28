@@ -38,6 +38,7 @@ const SingleProduct = () => {
                     icon="star"
                     defaultRating={Math.ceil(calculateRating(singleData))}
                     maxRating={5}
+                    disabled
                   />
                 </Item.Extra>
                 <Select

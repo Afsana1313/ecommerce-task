@@ -4,17 +4,20 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SingleProduct from "./components/SingleProduct";
 import Header from "./components/Header";
 import Checkout from "./components/Checkout";
-
 import MiniCartModal from "./components/cart/MiniCartModal";
-
 export const DataContext = createContext(null);
 
 function Main() {
   const [productData, setProductData] = useState([]);
   const [cartData, setCarttData] = useState([]);
   const [customerData, setCustomerData] = useState([]);
-
+  const [resultData, setResultData] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isMiniCartOpen, setIsMiniCartOpen] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const [filterByRating, setFilterByRating] = useState(1);
+  const [filterByCategories, setFilterByCategories] = useState("all");
+
   const value = {
     productData,
     setProductData,
@@ -22,6 +25,16 @@ function Main() {
     setCarttData,
     customerData,
     setCustomerData,
+    resultData,
+    setResultData,
+    categories,
+    setCategories,
+    searchText,
+    setSearchText,
+    filterByRating,
+    setFilterByRating,
+    filterByCategories,
+    setFilterByCategories,
     isMiniCartOpen,
     setIsMiniCartOpen
   };

@@ -1,3 +1,4 @@
+import ProductCard from "../components/ProductCard";
 import { listOfMonths } from "../static/data";
 // Cart Related Controller functions
 
@@ -78,4 +79,57 @@ export const dateFormatter = (stringDate) => {
   const { month } = listOfMonths?.find((i) => i.key === numberMonth);
   const date = stringDate.slice(8, 10);
   return `${month} ${date}, ${year}`;
+};
+
+export const getResultDataWithSearchText = (resultData, searchText) => {
+  var searchArray = new Set(searchText.split(" "));
+  var newID = [];
+  resultData.forEach((item) =>
+    searchArray.forEach((text) => {
+      if (item.title.toLowerCase().includes(text.toLowerCase())) {
+        newID.push(item.id);
+      }
+    })
+  );
+  newID = new Set([...newID]);
+  var newData = [];
+  // console.log(newData);
+  newID.forEach((i) => {
+    newData.push(resultData?.find((item) => item.id == i));
+  });
+  return newData;
+};
+
+export const getResultDataWithRating = (numberRating, productData) => {
+  return productData?.filter((i) => calculateRating(i) >= numberRating);
+};
+export const getResultDataWithCategories = (categories, productData) => {
+  var newItem = [];
+  if (categories == "all") return productData;
+  productData?.forEach((item) => {
+    item?.categories?.forEach((i) => {
+      if (i == categories) newItem.push(item);
+    });
+  });
+  return newItem;
+};
+export const updateResultData = (
+  searchText,
+  numberRating,
+  categories,
+  productData
+) => {
+  const search_updated_arr = getResultDataWithSearchText(
+    productData,
+    searchText
+  );
+  const rating_updated_arr = getResultDataWithRating(
+    numberRating,
+    search_updated_arr
+  );
+  const categories_updated_arr = getResultDataWithCategories(
+    categories,
+    rating_updated_arr
+  );
+  return categories_updated_arr;
 };

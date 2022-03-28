@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import CustomButton from './CustomButton'
 import { Link } from 'react-router-dom'
-import { Card, Image } from 'semantic-ui-react'
+import { Card, Image, Rating } from 'semantic-ui-react'
 import useDataContext from './useDataContext'
+import { calculateRating } from '../controller/controller'
+
 function ProductCard(props) {
   const [isInCart, setIsInCart] = useState(false)
   const btnText = isInCart ? 'View Cart' : 'Add To Cart'
@@ -35,6 +37,11 @@ function ProductCard(props) {
         <Image src={product_img} wrapped ui />
         <Card.Content className="single-product-container-text">
           <Card.Header>{title}</Card.Header>
+          <Rating
+            icon="star"
+            defaultRating={Math.ceil(calculateRating(props.product))}
+            maxRating={5}
+          />
           <Card.Description>&#36;{price}</Card.Description>
         </Card.Content>
       </Link>

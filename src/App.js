@@ -1,11 +1,10 @@
 import "./style/App.scss";
 import ProductContainer from "./components/ProductContainer";
 import FilterSection from "./components/FilterSection";
-import { useEffect, createRef } from "react";
+import { useEffect } from "react";
 import useDataContext from "./components/useDataContext";
-import FloatingCart from "./components/cart/FloatingCart";
 function App() {
-  const { setProductData, setCustomerData } = useDataContext();
+  const { setProductData, setCustomerData, setCategories } = useDataContext();
   const getData = () => {
     fetch("./assets/products.json", {
       headers: {
@@ -31,9 +30,22 @@ function App() {
         setCustomerData(data);
       });
   };
+  const getCategoriesData = () => {
+    fetch("./assets/categories.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data.categories);
+      });
+  };
   useEffect(() => {
     getData();
     getCustomersData();
+    getCategoriesData();
   }, []);
 
   return (

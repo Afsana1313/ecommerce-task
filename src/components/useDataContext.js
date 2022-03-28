@@ -9,6 +9,16 @@ const useDataContext = () => {
     setCarttData,
     customerData,
     setCustomerData,
+    resultData,
+    setResultData,
+    categories,
+    setCategories,
+    searchText,
+    setSearchText,
+    filterByRating,
+    setFilterByRating,
+    filterByCategories,
+    setFilterByCategories,
     isMiniCartOpen,
     setIsMiniCartOpen
   } = useContext(DataContext);
@@ -19,6 +29,16 @@ const useDataContext = () => {
     setCarttData,
     customerData,
     setCustomerData,
+    resultData,
+    setResultData,
+    categories,
+    setCategories,
+    searchText,
+    setSearchText,
+    filterByRating,
+    setFilterByRating,
+    filterByCategories,
+    setFilterByCategories,
     isMiniCartOpen,
     setIsMiniCartOpen
   };
