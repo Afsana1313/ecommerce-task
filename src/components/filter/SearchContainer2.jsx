@@ -12,11 +12,9 @@ function SearchContainer2() {
     setResultData,
     filterByRating,
     filterByCategories,
+    searchText,
   } = useDataContext()
 
-  //   useEffect(() => {
-  //     setResultData(() => getResultDataWithSearchText(resultData, searchText))
-  //   }, [searchText])
   const handleSearchTextChange = (e) => {
     setTimeout(() => {
       setSearchText(e.target.value)
@@ -29,12 +27,6 @@ function SearchContainer2() {
         ),
       )
     }, 1000)
-    /*  setTimeout(() => {
-      setSearchText(e.target.value)
-      setResultData(() =>
-        getResultDataWithSearchText(productData, e.target.value),
-      )
-    }, 1000) */
   }
   const inputStyle = {
     width: '200px',

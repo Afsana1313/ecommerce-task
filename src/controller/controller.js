@@ -116,8 +116,11 @@ export const getResultDataWithCategories = (categories, productData) => {
   var newItem = [];
   if (categories === "all") return productData;
   productData?.forEach((item) => {
+    //console.log(item.categories);
+
     item?.categories?.forEach((i) => {
-      if (i === categories) newItem.push(item);
+      console.log(i, categories);
+      if (parseInt(i) === parseInt(categories)) newItem.push(item);
     });
   });
   return newItem;

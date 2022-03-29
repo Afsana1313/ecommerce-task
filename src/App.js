@@ -48,7 +48,7 @@ function App() {
     getData();
     getCustomersData();
     getCategoriesData();
-  });
+  }, []);
 
   return (
     <div className="whole-container">

@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Button, Header, Modal } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import useDataContext from '../useDataContext'
+import ProductCard from '../ProductCard'
 function ModalPlaceOrder({ checkError }) {
-  const { setCarttdata } = useDataContext()
+  const { setCarttData, productData } = useDataContext()
   const [open, setOpen] = useState(false)
   return (
     <div>
@@ -26,14 +27,9 @@ function ModalPlaceOrder({ checkError }) {
           <Modal.Description style={{ textAlign: 'center' }}>
             <Header>Your Order Has been Placed</Header>
             <Link to="/">
-              <Button
-                color="black"
-                onClick={() => {
-                  setCarttdata()
-                }}
-              >
-                Go Back To Home Page
-              </Button>
+              <div onClick={() => setCarttData([])}>
+                <Button color="black">Go Back To Home Page</Button>
+              </div>
             </Link>
           </Modal.Description>
         </Modal.Content>
